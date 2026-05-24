@@ -2,7 +2,7 @@
 
 WeatherFlow is a full-stack weather forecast platform with authentication, favorites, search history, and Redis-backed caching. It is built as a React frontend and an Express API using PostgreSQL, Prisma, and Open-Meteo.
 
-## Portfolio Snapshot
+## Project Snapshot
 
 - Type: Full-stack web application
 - Architecture: React SPA + Express REST API + PostgreSQL + Redis
