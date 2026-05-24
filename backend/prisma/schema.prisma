@@ -55,7 +55,7 @@ model CachedWeatherLog {
   id           String   @id @default(cuid())
   cacheKey     String   @unique @map("cache_key")
   cityName     String   @map("city_name")
-  source       String   @default("openweathermap")
+  source       String   @default("open-meteo")
   payload      Json
   cacheHits    Int      @default(0) @map("cache_hits")
   lastStatus   String   @default("MISS") @map("last_status")

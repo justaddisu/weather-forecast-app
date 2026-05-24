@@ -38,7 +38,7 @@ CREATE TABLE cached_weather_logs (
   id TEXT PRIMARY KEY,
   cache_key TEXT NOT NULL UNIQUE,
   city_name TEXT NOT NULL,
-  source TEXT NOT NULL DEFAULT 'openweathermap',
+  source TEXT NOT NULL DEFAULT 'open-meteo',
   payload JSONB NOT NULL,
   cache_hits INTEGER NOT NULL DEFAULT 0,
   last_status TEXT NOT NULL DEFAULT 'MISS',

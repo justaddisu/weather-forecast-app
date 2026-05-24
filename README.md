@@ -1,6 +1,13 @@
 # WeatherFlow
 
-WeatherFlow is a full-stack weather forecast platform with authentication, favorites, search history, and Redis-backed caching. It is built as a React frontend and an Express API using PostgreSQL, Prisma, and OpenWeatherMap.
+WeatherFlow is a full-stack weather forecast platform with authentication, favorites, search history, and Redis-backed caching. It is built as a React frontend and an Express API using PostgreSQL, Prisma, and Open-Meteo.
+
+## Portfolio Snapshot
+
+- Type: Full-stack web application
+- Architecture: React SPA + Express REST API + PostgreSQL + Redis
+- Primary focus: API design, auth flows, caching strategy, and responsive UI
+- Data provider: Open-Meteo (no API key required)
 
 ## Highlights
 
@@ -16,7 +23,7 @@ WeatherFlow is a full-stack weather forecast platform with authentication, favor
 - Frontend: React, Vite, Tailwind CSS, React Router, Axios
 - Backend: Node.js, Express, Prisma ORM, Zod, JWT, Redis client
 - Data layer: PostgreSQL (persistent data) + Redis (cache)
-- Third-party API: OpenWeatherMap (proxied through backend)
+- Third-party API: Open-Meteo (proxied through backend)
 
 ## Project Structure
 
@@ -80,11 +87,24 @@ User:
 
 - Node.js 20+
 - Docker Desktop (recommended for PostgreSQL and Redis)
-- OpenWeatherMap API key
 
 ### 2. Set environment variables
 
-Create environment files for backend and frontend.
+Create environment files from examples.
+
+PowerShell:
+
+```powershell
+Copy-Item backend/.env.example backend/.env
+Copy-Item frontend/.env.example frontend/.env
+```
+
+Bash:
+
+```bash
+cp backend/.env.example backend/.env
+cp frontend/.env.example frontend/.env
+```
 
 Backend example:
 
@@ -95,9 +115,6 @@ DATABASE_URL=postgresql://postgres:postgres@localhost:5432/weather_app?schema=pu
 REDIS_URL=redis://localhost:6379
 JWT_SECRET=replace-with-a-long-random-secret
 JWT_EXPIRES_IN=7d
-OPENWEATHER_API_KEY=your-openweather-api-key
-OPENWEATHER_BASE_URL=https://api.openweathermap.org
-OPENWEATHER_TIMEOUT_MS=8000
 FRONTEND_URL=http://localhost:5173
 ```
 
@@ -178,9 +195,30 @@ This starts:
 - Use managed PostgreSQL (Neon/Supabase) and Redis (Upstash) for production
 - Run prisma db push during first deployment to initialize schema
 
+## Quality Signals
+
+- Centralized request validation with Zod schemas
+- Global error handling and async controller wrappers
+- Route-level and auth-specific rate limiting
+- Cache-aside Redis strategy with TTL for weather payloads
+- Backend-only token handling for authenticated endpoints
+
+## Commit Message Standard
+
+Use clear, professional, imperative commit messages. Recommended format:
+
+```text
+type(scope): concise summary
+```
+
+Examples:
+
+- feat(weather): add hourly forecast cache metadata
+- fix(auth): return 401 for invalid credentials
+- docs(readme): clarify local setup and deployment notes
+
 ## Implementation Notes
 
-- OpenWeatherMap API key is only used on the backend
 - Request validation is handled with Zod middleware
 - Rate limiting is enabled globally with stricter auth limits
 - Redis uses a cache-aside strategy with a 15-minute TTL

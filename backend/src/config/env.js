@@ -10,9 +10,6 @@ const envSchema = z.object({
   REDIS_URL: z.string().default("redis://localhost:6379"),
   JWT_SECRET: z.string().min(16),
   JWT_EXPIRES_IN: z.string().default("7d"),
-  OPENWEATHER_API_KEY: z.string().default(""),
-  OPENWEATHER_BASE_URL: z.string().default("https://api.openweathermap.org"),
-  OPENWEATHER_TIMEOUT_MS: z.coerce.number().default(8000),
   FRONTEND_URL: z.string().url().default("http://localhost:5173"),
 });
 
