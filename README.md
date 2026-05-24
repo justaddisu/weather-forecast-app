@@ -178,26 +178,6 @@ This starts:
 - Use managed PostgreSQL (Neon/Supabase) and Redis (Upstash) for production
 - Run prisma db push during first deployment to initialize schema
 
-## Push This Project To GitHub
-
-Run these commands from the project root:
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: WeatherFlow full-stack app"
-git branch -M main
-git remote add origin <your-repository-url>
-git push -u origin main
-```
-
-If the remote already exists, update it with:
-
-```bash
-git remote set-url origin <your-repository-url>
-git push -u origin main
-```
-
 ## Implementation Notes
 
 - OpenWeatherMap API key is only used on the backend
