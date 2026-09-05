@@ -116,6 +116,7 @@ REDIS_URL=redis://localhost:6379
 JWT_SECRET=replace-with-a-long-random-secret
 JWT_EXPIRES_IN=7d
 FRONTEND_URL=http://localhost:5173
+PRODUCT_KEY=MY_PRODUCT_KEY
 ```
 
 Frontend example:
@@ -218,6 +219,8 @@ Examples:
 - docs(readme): clarify local setup and deployment notes
 
 ## Implementation Notes
+
+Original work and implementation by Addisu Dessalegn.
 
 - Request validation is handled with Zod middleware
 - Rate limiting is enabled globally with stricter auth limits
